@@ -551,6 +551,7 @@ body {
         background-image: url(./assets//home/background-home-desktop.jpg);
     }
 }
+
 /* ------------------- */
 /* Layout             */
 /* ------------------- */
@@ -563,7 +564,7 @@ body {
     padding-bottom: 3rem;
 }
 
-.grid-container * {
+.grid-container p:not([class]) {
     max-width: 50ch;
 }
 
@@ -574,23 +575,23 @@ body {
 /* desitnation layout */
 .grid-container--destination {
     --flow-space: 2rem;
-    grid-template-areas: 
-    'title'
-    'image'
-    'tabs'
-    'content';
+    grid-template-areas:
+        'title'
+        'image'
+        'tabs'
+        'content';
 }
 
-.grid-container--destination > img {
+.grid-container--destination>img {
     grid-area: image;
     max-width: 60%;
 }
 
-.grid-container--destination > .tab-list {
+.grid-container--destination>.tab-list {
     grid-area: tabs;
 }
 
-.grid-container--destination > .destination-info {
+.grid-container--destination>.destination-info {
     grid-area: content;
 }
 
@@ -601,6 +602,22 @@ body {
     margin-top: 2.5rem;
 }
 
+.destination-meta p {
+    font-size: 1.75rem;
+}
+
+@media (min-width: 35em) {
+    .numbered-title {
+        justify-self: start;
+        margin-top: 2rem;
+    }
+
+    .destination-meta {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
 @media (min-width: 45em) {
     .grid-container {
         text-align: left;
@@ -608,11 +625,11 @@ body {
         grid-template-columns: minmax(1rem, 1fr) minmax(0, 40rem) minmax(0, 40rem) minmax(1rem, 1fr);
     }
 
-    .grid-container>*:first-child {
+    .grid-container--home>*:first-child {
         grid-column: 2;
     }
 
-    .grid-container>*:last-child {
+    .grid-container--home>*:last-child {
         grid-column: 3;
     }
 
@@ -620,4 +637,26 @@ body {
         padding-bottom: max(6rem, 20vh);
         align-items: end;
     }
+
+    .grid-container--destination {
+        justify-items: start;
+        align-content: start;
+        grid-template-areas:
+            '. title title .'
+            '. image tabs .'
+            '. image content .';
+    }
+
+    .grid-container--destination>img {
+        max-width: 90%;
+    }
+
+    .destination-meta {
+        --gap: min(6vw, 6rem);
+        justify-content: start;
+    }
+
+
+
+
 }
